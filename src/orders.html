@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Project</title>
+    <link href="./output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <section id="header">
+      <a href="index.html"><img src="img/logo.png" alt="" class="logo" /></a>
+      <div>
+        <ul id="navbar">
+          <li id="admin"><a href="index.html">Home</a></li>
+          <li id="admin">
+            <a href="products.html">Products</a>
+          </li>
+          <li id="admin"><a href="orders.html" class="active">Orders</a></li>
+          <li id="admin"><a href="users.html">Users</a></li>
+          <li id="admin" class="lg-bag">
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+          </li>
+          <li><button class="normal login">Login</button></li>
+          <a id="close"><i class="fa-solid fa-xmark"></i></a>
+        </ul>
+      </div>
+      <div id="mobile">
+        <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+        <i id="bar" class="fa-solid fa-outdent"></i>
+      </div>
+    </section>
+    <div class="container mx-auto">
+      <div class="overflow-x-auto">
+        <table
+          class="min-w-full bg-white border-[1px] border-[#088178] mt-[20px]"
+        >
+          <thead>
+            <tr class="bg-gray-200 text-gray-600 uppercase leading-normal">
+              <th class="py-3 px-6 text-left">Image</th>
+              <th class="py-3 px-6 text-left">Name</th>
+              <th class="py-3 px-6 text-left">Category</th>
+              <th class="py-3 px-6 text-center">Price</th>
+              <th class="py-3 px-6 text-center">Stock Quantity</th>
+              <th class="py-3 px-6 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-600 font-semibold products"></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="orders.js" type="module"></script>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

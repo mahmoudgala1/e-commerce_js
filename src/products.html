@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Project</title>
+    <link href="./output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <section id="header">
+      <a href="index.html"><img src="img/logo.png" alt="" class="logo" /></a>
+      <div>
+        <ul id="navbar">
+          <li id="admin"><a href="index.html">Home</a></li>
+          <li id="admin">
+            <a href="products.html" class="active">Products</a>
+          </li>
+          <li id="admin"><a href="orders.html">Orders</a></li>
+          <li id="admin"><a href="users.html">Users</a></li>
+          <li id="admin" class="lg-bag">
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+          </li>
+          <li><button class="normal login">Login</button></li>
+          <a id="close"><i class="fa-solid fa-xmark"></i></a>
+        </ul>
+      </div>
+      <div id="mobile">
+        <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+        <i id="bar" class="fa-solid fa-outdent"></i>
+      </div>
+    </section>
+    <div class="container mx-auto">
+      <button
+        id="add-product"
+        class="bg-[#088178] p-[20px] rounded-xl text-white my-[20px]"
+      >
+        <i class="fa-solid fa-circle-plus text-[20px]"></i>
+        AddProduct
+      </button>
+      <div class="overflow-x-auto">
+        <table
+          class="min-w-full bg-white border-[1px] border-[#088178] mb-[20px]"
+        >
+          <thead>
+            <tr class="bg-gray-200 text-gray-600 uppercase leading-normal">
+              <th class="py-3 px-6 text-left">Image</th>
+              <th class="py-3 px-6 text-left">Name</th>
+              <th class="py-3 px-6 text-left">Category</th>
+              <th class="py-3 px-6 text-center">Price</th>
+              <th class="py-3 px-6 text-center">Stock Quantity</th>
+              <th class="py-3 px-6 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-600 font-semibold products"></tbody>
+        </table>
+      </div>
+    </div>
+    <div
+      id="add-modal"
+      class="relative z-10 hidden"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        aria-hidden="true"
+      ></div>
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div
+          class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+        >
+          <div
+            class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+          >
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <div class="sm:flex">
+                <div
+                  class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full"
+                >
+                  <h3
+                    class="text-base font-semibold leading-6 text-gray-900"
+                    id="modal-title"
+                  >
+                    Add A New Product
+                  </h3>
+                  <div class="mt-2">
+                    <div class="mb-2">
+                      <label
+                        for="product-name"
+                        className="mb-[2px] text-sm font-medium text-gray-700"
+                        >Product Name</label
+                      >
+                      <div class="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="product-name"
+                          id="product-name"
+                          class="w-full border-[1px] border-gray-300 shadow-md focus:border-[#088178] focus:outline-none focus:ring-2 focus:ring-[#088178] rounded-md px-3 py-3 text-md"
+                        />
+                      </div>
+                    </div>
+                    <div class="mb-2">
+                      <label
+                        for="product-category"
+                        className="mb-[2px] text-sm font-medium text-gray-700"
+                        >Product Ctegory</label
+                      >
+                      <div class="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="product-category"
+                          id="product-category"
+                          class="w-full border-[1px] border-gray-300 shadow-md focus:border-[#088178] focus:outline-none focus:ring-2 focus:ring-[#088178] rounded-md px-3 py-3 text-md"
+                        />
+                      </div>
+                    </div>
+                    <div class="mb-2">
+                      <label
+                        for="product-image"
+                        className="mb-[2px] text-sm font-medium text-gray-700"
+                        >Product Image</label
+                      >
+                      <div class="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="product-image"
+                          id="product-image"
+                          class="w-full border-[1px] border-gray-300 shadow-md focus:border-[#088178] focus:outline-none focus:ring-2 focus:ring-[#088178] rounded-md px-3 py-3 text-md"
+                        />
+                      </div>
+                    </div>
+                    <div class="mb-2">
+                      <label
+                        for="product-price"
+                        className="mb-[2px] text-sm font-medium text-gray-700"
+                        >Product Price</label
+                      >
+                      <div class="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          name="product-price"
+                          id="product-price"
+                          class="w-full border-[1px] border-gray-300 shadow-md focus:border-[#088178] focus:outline-none focus:ring-2 focus:ring-[#088178] rounded-md px-3 py-3 text-md"
+                        />
+                      </div>
+                    </div>
+                    <div class="mb-2">
+                      <label
+                        for="product-stock"
+                        className="mb-[2px] text-sm font-medium text-gray-700"
+                        >Product Stock Quantity</label
+                      >
+                      <div class="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          name="product-stock"
+                          id="product-stock"
+                          class="w-full border-[1px] border-gray-300 shadow-md focus:border-[#088178] focus:outline-none focus:ring-2 focus:ring-[#088178] rounded-md px-3 py-3 text-md"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
+            >
+              <button
+                id="add"
+                type="button"
+                class="inline-flex w-full justify-center rounded-md bg-[#088178] px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto"
+              >
+                Add
+              </button>
+              <button
+                id="add-cancel"
+                type="button"
+                class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="edit-modal"
+      class="relative z-10 hidden"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        aria-hidden="true"
+      ></div>
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div
+          class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+        >
+          <div
+            class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+          >
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <div class="sm:flex">
+                <div
+                  class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full"
+                >
+                  <h3
+                    class="text-base font-semibold leading-6 text-gray-900"
+                    id="modal-title"
+                  >
+                    Edit A Product
+                  </h3>
+                  <div class="mt-2">
+                    <div class="mb-2">
+                      <label
+                        for="edit-product-name"
+                        className="mb-[2px] text-sm font-medium text-gray-700"
+                        >Product Name</label
+                      >
+                      <div class="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="edit-product-name"
+                          id="edit-product-name"
+                          class="w-full border-[1px] border-gray-300 shadow-md focus:border-[#088178] focus:outline-none focus:ring-2 focus:ring-[#088178] rounded-md px-3 py-3 text-md"
+                        />
+                      </div>
+                    </div>
+                    <div class="mb-2">
+                      <label
+                        for="edit-product-category"
+                        className="mb-[2px] text-sm font-medium text-gray-700"
+                        >Product Ctegory</label
+                      >
+                      <div class="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="edit-product-category"
+                          id="edit-product-category"
+                          class="w-full border-[1px] border-gray-300 shadow-md focus:border-[#088178] focus:outline-none focus:ring-2 focus:ring-[#088178] rounded-md px-3 py-3 text-md"
+                        />
+                      </div>
+                    </div>
+                    <div class="mb-2">
+                      <label
+                        for="edit-product-image"
+                        className="mb-[2px] text-sm font-medium text-gray-700"
+                        >Product Image</label
+                      >
+                      <div class="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="edit-product-image"
+                          id="edit-product-image"
+                          class="w-full border-[1px] border-gray-300 shadow-md focus:border-[#088178] focus:outline-none focus:ring-2 focus:ring-[#088178] rounded-md px-3 py-3 text-md"
+                        />
+                      </div>
+                    </div>
+                    <div class="mb-2">
+                      <label
+                        for="edit-product-price"
+                        className="mb-[2px] text-sm font-medium text-gray-700"
+                        >Product Price</label
+                      >
+                      <div class="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          name="edit-product-price"
+                          id="edit-product-price"
+                          class="w-full border-[1px] border-gray-300 shadow-md focus:border-[#088178] focus:outline-none focus:ring-2 focus:ring-[#088178] rounded-md px-3 py-3 text-md"
+                        />
+                      </div>
+                    </div>
+                    <div class="mb-2">
+                      <label
+                        for="edit-product-stock"
+                        className="mb-[2px] text-sm font-medium text-gray-700"
+                        >Product Stock Quantity</label
+                      >
+                      <div class="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          name="edit-product-stock"
+                          id="edit-product-stock"
+                          class="w-full border-[1px] border-gray-300 shadow-md focus:border-[#088178] focus:outline-none focus:ring-2 focus:ring-[#088178] rounded-md px-3 py-3 text-md"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
+            >
+              <button
+                id="edit"
+                type="button"
+                class="inline-flex w-full justify-center rounded-md bg-[#088178] px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto"
+              >
+                Edit
+              </button>
+              <button
+                id="edit-cancel"
+                type="button"
+                class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="products.js" type="module"></script>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

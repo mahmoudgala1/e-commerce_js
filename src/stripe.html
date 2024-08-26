@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buy cool new product</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <section>
+      <button type="submit" id="checkout-button">Checkout</button>
+    </section>
+    <script>
+      const stripe = Stripe(
+        "pk_test_51Pmi7dHY9C3R0yqy9puSPfuVEVHBQAlrirSUg4IStjSpcl4EQvoPYdGsQCKRyDDCzP1qy9EBF2HQAfa9Is4WqRcY00T8egooja"
+      );
+      const checkoutButton = document.getElementById("checkout-button");
+      checkoutButton.addEventListener("click", () => {
+        stripe
+          .redirectToCheckout({
+            lineItems: [
+              {
+                // price: "price_1PrjeAHY9C3R0yqyZfqUpDQM",
+                price: "price_1PrkLgHY9C3R0yqy1otHoeQK",
+                quantity: 10,
+              },
+            ],
+            // mode: "subscription",
+            mode: "payment",
+            successUrl: "http://127.0.0.1:5500/src/stripe.html",
+            cancelUrl: "http://127.0.0.1:5500/src/stripe.html",
+          })
+          .then(function (response) {
+            alert(response);
+          });
+      });
+    </script>
+  </body>
+</html>
+
+<!-- 4000056655665556 -->
