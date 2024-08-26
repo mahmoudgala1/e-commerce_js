@@ -225,7 +225,6 @@ button.white {
   padding: 10px 12px;
   border: 1px solid #cce7d0;
   border-radius: 25px;
-  cursor: pointer;
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
   margin: 15px 0;
   transition: 0.2s ease;
@@ -261,7 +260,7 @@ button.white {
   font-weight: 700;
   color: #088178;
 }
-#product1 .pro-container .pro a i {
+#product1 .pro-container .pro span i {
   width: 40px;
   height: 40px;
   line-height: 40px;
@@ -272,6 +271,7 @@ button.white {
   position: absolute;
   bottom: 20px;
   right: 10px;
+  cursor: pointer;
 }
 /* End Product */
 /* Start Banner */
@@ -510,10 +510,36 @@ button.white {
 #prodetails .single-pro-details span {
   line-height: 25px;
 }
-/* Blog Page*/
-#page-header.blog-header {
-  background-image: url("img/banner/b19.jpg");
+
+/* Cart page */
+#subtotal button {
+  background-color: #088178;
+  color: #fff;
+  padding: 12px 20px;
 }
+
+#subtotal {
+  width: 50%;
+  margin-bottom: 30px;
+  margin: auto;
+  margin-top: 3rem;
+  border: 1px solid #e2e9e1;
+  padding: 30px;
+}
+
+#subtotal table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#subtotal table td {
+  width: 50%;
+  border: 1px solid #e2e9e1;
+  padding: 10px;
+  font-size: 13px;
+}
+
 @media (max-width: 799px) {
   .section-p1 {
     padding: 40px 40px;
