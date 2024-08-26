@@ -26,7 +26,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
-
 document.querySelectorAll("#admin").forEach((item) => {
   item.style.display = "none";
 });

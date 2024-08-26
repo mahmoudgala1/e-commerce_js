@@ -29,30 +29,6 @@ const db = getFirestore();
 
 await getAllProducts();
 
-document.querySelectorAll("#admin").forEach((item) => {
-  item.style.display = "none";
-});
-
-let user = JSON.parse(localStorage.getItem("loggedInUserId"));
-
-if (user) {
-  document.querySelector(".login").textContent = "Logout";
-  document.querySelector("#admin.lg-bag").style.display = "block";
-  if (user.role == "admin") {
-    document.querySelectorAll("#admin").forEach((item) => {
-      item.style.display = "block";
-    });
-  } else {
-    window.location.href = "index.html";
-    document.querySelectorAll("#admin").forEach((item) => {
-      item.style.display = "none";
-    });
-    document.querySelector("#admin.lg-bag").style.display = "block";
-  }
-} else {
-  window.location.href = "index.html";
-}
-
 const productName = document.getElementById("product-name");
 const productCategory = document.getElementById("product-category");
 const productImage = document.getElementById("product-image");
@@ -113,7 +89,6 @@ document.getElementById("add-cancel").addEventListener("click", () => {
 });
 
 document.getElementById("edit-cancel").addEventListener("click", () => {
-  clearInputData();
   document.getElementById("edit-modal").classList.add("hidden");
 });
 
@@ -218,7 +193,7 @@ document.querySelectorAll("#delete-product").forEach((item) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton:
-          "px-[15px] py-[10px] bg-green-600 text-white outline-none rounded-lg",
+          "px-[15px] py-[10px] ml-3 bg-green-600 text-white outline-none rounded-lg",
         cancelButton:
           "px-[15px] py-[10px] bg-red-600 text-white outline-none rounded-lg",
       },
