@@ -39,7 +39,8 @@ async function getAllProducts() {
   const querySnapshot = await getDocs(collection(db, "products"));
   querySnapshot.forEach((docSnap) => {
     const product = docSnap.data();
-    document.querySelector(".pro-container").innerHTML += `
+    document.querySelectorAll(".pro-container").forEach((item) => {
+      item.innerHTML += `
     <div class="pro">
       <img src=${product.Image} alt="" />
       <div class="des">
@@ -57,6 +58,7 @@ async function getAllProducts() {
       <span><i id="addtocart" data-id=${docSnap.id} class="fa-solid fa-cart-shopping"></i></span>
     </div>
         `;
+    });
   });
 }
 

@@ -57,7 +57,7 @@ if (user) {
     document.querySelector("#admin.lg-bag").style.display = "block";
   }
 } else {
-  window.location.href = "index.html";
+  window.location.href = "login.html";
 }
 
 document.querySelector(".login").addEventListener("click", () => {
