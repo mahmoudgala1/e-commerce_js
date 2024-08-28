@@ -147,6 +147,10 @@ button.white {
 #hero h2 {
   color: #fff;
 }
+#hero p{
+  color: #fff;
+}
+
 #hero button {
   background-image: url("img/button.png");
   background-color: transparent;

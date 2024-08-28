@@ -66,10 +66,19 @@ async function getProductsFromCart(userId) {
                 >
               </td>
               <td class="py-3 px-6 text-center">
-                <span
-                  class="py-1 px-3 rounded-full"
-                  >${product.status}</span
-                >
+              ${
+                product.status == "Pending"
+                  ? `<span class="py-2 px-3 rounded-full bg-gray-500 text-white">${product.status}</span>`
+                  : product.status == "Processing"
+                  ? `<span class="py-2 px-3 rounded-full bg-yellow-500 text-white">${product.status}</span>`
+                  : product.status == "Confirmed"
+                  ? `<span class="py-2 px-3 rounded-full bg-indigo-500 text-white">${product.status}</span>`
+                  : product.status == "Canceled"
+                  ? `<span class="py-2 px-3 rounded-full bg-red-600 text-white">${product.status}</span>`
+                  : product.status == "Delivered"
+                  ? `<span class="py-2 px-3 rounded-full bg-green-500 text-white">${product.status}</span>`
+                  : ""
+              }
               </td>
               ${
                 product.status == "Pending"
@@ -85,8 +94,8 @@ async function getProductsFromCart(userId) {
                   : product.status == "Confirmed"
                   ? `<td class="py-3 px-6 text-center" ><i id="checkout" data-id=${docSnap.id} class="fa-solid fa-credit-card text-[30px] duration-200 hover:text-indigo-700 hover:cursor-pointer"></i></td>`
                   : product.status == "Delivered"
-                  ? `<td class="py-3 px-6 text-center" ><i class="fa-solid fa-check text-[30px] text-green-600"></i></td>`
-                  : `<td class="py-3 px-6 text-center" ><i class="fa-solid fa-x text-[30px] text-red-700"></i></td>`
+                  ? `<td class="py-3 px-6 text-center" ><i class="fa-solid fa-check text-[30px] text-green-500"></i></td>`
+                  : `<td class="py-3 px-6 text-center" ><i class="fa-solid fa-x text-[30px] text-red-600"></i></td>`
               }
             </tr>
         `;
@@ -110,6 +119,7 @@ async function getProduct(id) {
 document.querySelectorAll("#checkout").forEach((item) => {
   item.addEventListener("click", async () => {
     const id = item.getAttribute("data-id");
+    const product = await getProduct(id);
     const newProduct = {
       status: "Delivered",
     };
@@ -121,12 +131,10 @@ document.querySelectorAll("#checkout").forEach((item) => {
       .redirectToCheckout({
         lineItems: [
           {
-            // price: "price_1PrjeAHY9C3R0yqyZfqUpDQM",
-            price: "price_1PrkLgHY9C3R0yqy1otHoeQK",
-            quantity: 10,
+            price: "price_1PsQ5mHY9C3R0yqyjw2erd3N",
+            quantity: parseInt(product.quantity),
           },
         ],
-        // mode: "subscription",
         mode: "payment",
         successUrl: "http://127.0.0.1:5500/src/cart.html",
         cancelUrl: "http://127.0.0.1:5500/src/cart.html",

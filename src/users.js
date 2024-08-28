@@ -32,6 +32,7 @@ await getAllUsers();
 const newFname = document.getElementById("edit-fname");
 const newLname = document.getElementById("edit-lname");
 const newEmail = document.getElementById("edit-email");
+const newRole = document.getElementById("edit-role");
 
 document.getElementById("edit-cancel").addEventListener("click", () => {
   document.getElementById("edit-modal").classList.add("hidden");
@@ -55,7 +56,9 @@ async function getAllUsers() {
     <tr class="border-b border-[#088178] hover:bg-gray-100">
               <td class="py-3 px-6 text-left whitespace-nowrap">
                 <div class="flex items-center">
-                  <img class="w-[60px]" src="./img/avatar.png" alt="">
+                  <img class="w-[60px]" src=${
+                    user.image ?? "./img/avatar.png"
+                  } alt="">
                 </div>
               </td>
               <td class="py-3 px-6 text-left">
@@ -68,6 +71,11 @@ async function getAllUsers() {
                   <span>${user.email}</span>
                 </div>
               </td>
+              <td class="py-3 px-6 text-left">
+                <div class="flex items-center">
+                  <span class="capitalize">${user.role}</span>
+                </div>
+              </td>
               <td class="py-3 px-6 text-center">
                 <span
                   class="py-1 px-3 rounded-full"
@@ -76,7 +84,9 @@ async function getAllUsers() {
               </td>
               <td class="py-3 px-6 text-center">
                 <div class="flex item-center justify-around">
-                  <i id="edit-product" data-id=${docSnap.id} class="fa-solid fa-pen-to-square text-[30px] duration-200 hover:text-[#088178] hover:cursor-pointer"></i>
+                  <i id="edit-product" data-id=${
+                    docSnap.id
+                  } class="fa-solid fa-pen-to-square text-[30px] duration-200 hover:text-[#088178] hover:cursor-pointer"></i>
                 </div>
               </td>
             </tr>
@@ -91,12 +101,14 @@ document.querySelectorAll("#edit-product").forEach((item) => {
     newFname.value = user.firstName;
     newLname.value = user.lastName;
     newEmail.value = user.email;
+    newRole.value = user.role;
     document.getElementById("edit-modal").classList.remove("hidden");
     document.getElementById("edit").addEventListener("click", async () => {
       const user = {
         firstName: newFname.value,
         lastName: newLname.value,
         email: newEmail.value,
+        role: newRole.value,
       };
       await updateUser(id, user);
       document.getElementById("edit-modal").classList.add("hidden");
@@ -108,11 +120,7 @@ document.querySelectorAll("#edit-product").forEach((item) => {
 async function updateUser(id, newUser) {
   const docRef = doc(db, "users", id);
   try {
-    await updateDoc(docRef, {
-      firstName: newUser.firstName,
-      lastName: newUser.lastName,
-      email: newUser.email,
-    });
+    await updateDoc(docRef, newUser);
     console.log("Document successfully updated!");
   } catch (e) {
     console.error("Error updating document: ", e);

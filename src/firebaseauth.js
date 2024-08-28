@@ -53,6 +53,7 @@ signUp.addEventListener("click", (event) => {
         firstName: firstName,
         lastName: lastName,
         role: "user",
+        image: "./img/avatar.png",
       };
       showMessage("Account Created Successfully", "signUpMessage");
       const docRef = doc(db, "users", user.uid);
@@ -96,6 +97,7 @@ signIn.addEventListener("click", (event) => {
             lname: docSnap.data().lastName,
             email: docSnap.data().email,
             role: docSnap.data().role,
+            image: docSnap.data().image ?? "./img/avatar.png",
           })
         );
       } else {

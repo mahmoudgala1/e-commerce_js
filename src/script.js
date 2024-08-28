@@ -38,7 +38,7 @@ if (user) {
   document.querySelector("#admin.lg-bag").style.display = "block";
   document.getElementById(
     "profile"
-  ).innerHTML = `<img class="w-[60px] rounded-full" src="./img/avatar.png" alt=""> ${user.fname} ${user.lname}`;
+  ).innerHTML = `<img class="w-[60px] rounded-full" src=${user.image} alt=""> ${user.fname} ${user.lname}`;
   if (user.role == "admin") {
     document.querySelectorAll("#admin").forEach((item) => {
       item.style.display = "block";

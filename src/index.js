@@ -66,6 +66,7 @@ async function addToCart(product) {
   try {
     await setDoc(doc(db, "carts", generateSecureRandomString(28)), {
       userId: user.id,
+      userName:`${user.fname} ${user.lname}`,
       product: product.Name,
       image: product.Image,
       price: product.Price,

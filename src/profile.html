@@ -43,6 +43,79 @@
         <i id="bar" class="fa-solid fa-outdent"></i>
       </div>
     </section>
+
+    <div class="bg-gray-100 min-h-[87vh] flex items-center justify-center">
+      <div
+        class="bg-white shadow-lg rounded-lg w-full max-w-3xl relative pt-[100px] mt-[50px]"
+      >
+        <img
+          src="./img/avatar.png"
+          class="absolute top-[-100px] left-[275px] rounded-full photo"
+          alt=""
+        />
+        <div class="p-6">
+          <div class="text-center">
+            <h2 class="text-3xl font-bold text-gray-800 name"></h2>
+            <button
+              id="editProfileBtn"
+              class="mt-4 bg-[#088178] text-white px-4 py-2 rounded-lg"
+            >
+              Edit Profile
+            </button>
+          </div>
+          <form id="profileForm" class="space-y-6 mt-6">
+            <div class="flex flex-col items-center">
+              <label for="firstName" class="text-gray-700">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                disabled
+                class="w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
+              />
+            </div>
+            <div class="flex flex-col items-center">
+              <label for="lastName" class="text-gray-700">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                disabled
+                class="w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
+              />
+            </div>
+            <div class="flex flex-col items-center">
+              <label for="email" class="text-gray-700">Email</label>
+              <input
+                type="email"
+                id="email"
+                disabled
+                class="w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
+              />
+            </div>
+            <div class="flex flex-col items-center">
+              <label for="image" class="text-gray-700">Image</label>
+              <input
+                type="text"
+                id="image"
+                disabled
+                class="w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
+              />
+            </div>
+            <div class="text-center">
+              <button
+                type="submit"
+                id="saveChangesBtn"
+                class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 hidden"
+              >
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script></script>
+
     <script src="profile.js" type="module"></script>
     <script src="script.js" type="module"></script>
   </body>
