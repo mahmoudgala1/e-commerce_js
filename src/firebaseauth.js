@@ -57,7 +57,7 @@ signUp.addEventListener("click", (event) => {
         role: "user",
         image: "./img/avatar.png",
       };
-      // showMessage("Account Created Successfully", "signUpMessage");
+      toastr.success("Account Created Successfully", "Success");
       const docRef = doc(db, "users", user.uid);
       setDoc(docRef, userData)
         .then(() => {
@@ -70,9 +70,9 @@ signUp.addEventListener("click", (event) => {
     .catch((error) => {
       const errorCode = error.code;
       if (errorCode == "auth/email-already-in-use") {
-        // showMessage("Email Address Already Exists !!!", "signUpMessage");
+        toastr.error("Email Address Already Exists", "Error");
       } else {
-        // showMessage("unable to create User", "signUpMessage");
+        toastr.error("unable to create User", "Error");
       }
     });
 });
@@ -87,7 +87,7 @@ signIn.addEventListener("click", (event) => {
   }
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then(async (userCredential) => {
-      // showMessage("login is successful", "signInMessage");
+      toastr.success("login is successful", "Success");
       const user = userCredential.user;
       const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
@@ -111,9 +111,9 @@ signIn.addEventListener("click", (event) => {
     .catch((error) => {
       const errorCode = error.code;
       if (errorCode === "auth/invalid-credential") {
-        // showMessage("Incorrect Email or Password", "signInMessage");
+        toastr.error("Incorrect Email or Password", "Error");
       } else {
-        // showMessage("Account does not Exist", "signInMessage");
+        toastr.error("Account does not Exist", "Error");
       }
     });
 });

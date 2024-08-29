@@ -1,40 +1,26 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Buy cool new product</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://js.stripe.com/v3/"></script>
-  </head>
-  <body>
-    <section>
-      <button type="submit" id="checkout-button">Checkout</button>
-    </section>
-    <script>
-      const stripe = Stripe(
-        "pk_test_51Pmi7dHY9C3R0yqy9puSPfuVEVHBQAlrirSUg4IStjSpcl4EQvoPYdGsQCKRyDDCzP1qy9EBF2HQAfa9Is4WqRcY00T8egooja"
-      );
-      const checkoutButton = document.getElementById("checkout-button");
-      checkoutButton.addEventListener("click", () => {
-        stripe
-          .redirectToCheckout({
-            lineItems: [
-              {
-                // price: "price_1PrjeAHY9C3R0yqyZfqUpDQM",
-                price: "price_1PrkLgHY9C3R0yqy1otHoeQK",
-                quantity: 10,
-              },
-            ],
-            // mode: "subscription",
-            mode: "payment",
-            successUrl: "http://127.0.0.1:5500/src/stripe.html",
-            cancelUrl: "http://127.0.0.1:5500/src/stripe.html",
-          })
-          .then(function (response) {
-            alert(response);
-          });
-      });
-    </script>
-  </body>
-</html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toastr Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body>
+    <button class="bg-red" onclick="showSuccess()">Show Success</button>
+    <button onclick="showError()">Show Error</button>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-<!-- 4000056655665556 -->
+    <script>
+        function showSuccess() {
+            toastr.success('This is a success message!', 'Success');
+        }
+
+        function showError() {
+            toastr.error('Something went wrong!', 'Error');
+        }
+    </script>
+</body>
+</html>

@@ -43,8 +43,8 @@ button:hover {
   background: #4338ca;
 }
 
-.btn{
-margin: 10px auto;
+.btn {
+  margin: 10px auto;
 }
 
 #signUpButton,
@@ -59,4 +59,13 @@ margin: 10px auto;
 #signInButton:hover {
   background-color: rgb(125, 125, 235);
   color: white;
+}
+
+#toast-container > .toast-success {
+  background-color: #4338ca; /* Custom background color */
+  color: #fff; /* Text color */
+}
+#toast-container > .toast-error {
+  background-color: #dc2626; /* Custom background color */
+  color: #fff; /* Text color */
 }

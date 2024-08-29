@@ -66,7 +66,7 @@ async function addToCart(product) {
   try {
     await setDoc(doc(db, "carts", generateSecureRandomString(28)), {
       userId: user.id,
-      userName:`${user.fname} ${user.lname}`,
+      userName: `${user.fname} ${user.lname}`,
       product: product.Name,
       image: product.Image,
       price: product.Price,
@@ -85,6 +85,10 @@ document.querySelectorAll("#addtocart").forEach((item) => {
     const id = item.getAttribute("data-id");
     const product = await getProduct(id);
     await addToCart(product);
+    toastr.success(
+      "Great choice! Your item has been added to the cart. 🎉",
+      "Success"
+    );
   });
 });
 

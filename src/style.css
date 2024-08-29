@@ -147,7 +147,7 @@ button.white {
 #hero h2 {
   color: #fff;
 }
-#hero p{
+#hero p {
   color: #fff;
 }
 
@@ -227,7 +227,7 @@ button.white {
   width: 23%;
   min-width: 250px;
   padding: 10px 12px;
-  border: 1px solid #c7d2fe ;
+  border: 1px solid #c7d2fe;
   border-radius: 25px;
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
   margin: 15px 0;
@@ -269,17 +269,17 @@ button.white {
   height: 40px;
   line-height: 40px;
   border-radius: 50px;
-  background-color: #c7d2fe  ;
+  background-color: #c7d2fe;
   color: #4338ca;
-  border: 1px solid #c7d2fe ;
+  border: 1px solid #c7d2fe;
   position: absolute;
   bottom: 20px;
   right: 10px;
   cursor: pointer;
   transition: 0.2s;
 }
-#product1 .pro-container .pro span i:hover{
-  background-color: #a5b4fc ;
+#product1 .pro-container .pro span i:hover {
+  background-color: #a5b4fc;
 }
 /* End Product */
 /* Start Banner */
@@ -685,3 +685,13 @@ button.white {
     width: 100%;
   }
 }
+
+#toast-container > .toast-success {
+  background-color: #4338ca; /* Custom background color */
+  color: #fff; /* Text color */
+}
+#toast-container > .toast-error {
+  background-color: #dc2626; /* Custom background color */
+  color: #fff; /* Text color */
+}
+
