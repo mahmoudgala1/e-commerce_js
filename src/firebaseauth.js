@@ -25,37 +25,39 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 
-function showMessage(message, divId) {
-  var messageDiv = document.getElementById(divId);
-  messageDiv.style.display = "block";
-  messageDiv.innerHTML = message;
-  messageDiv.style.opacity = 1;
-  setTimeout(function () {
-    messageDiv.style.opacity = 0;
-  }, 5000);
-}
 const signUp = document.getElementById("submitSignUp");
+
+const firstName = document.getElementById("fname");
+const lastName = document.getElementById("lname");
+const rEmail = document.getElementById("rEmail");
+const rPassword = document.getElementById("rPassword");
+
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+
 signUp.addEventListener("click", (event) => {
   event.preventDefault();
-  const email = document.getElementById("rEmail").value;
-  const password = document.getElementById("rPassword").value;
-  const firstName = document.getElementById("fName").value;
-  const lastName = document.getElementById("lName").value;
-
-  const auth = getAuth();
-  const db = getFirestore();
-
-  createUserWithEmailAndPassword(auth, email, password)
+  const errors = inputValidationsForRegister({
+    firstName,
+    lastName,
+    rEmail,
+    rPassword,
+  });
+  if (Object.values(errors).some((error) => error.value !== "")) {
+    showErrorMessageForRegister(errors);
+    return;
+  }
+  createUserWithEmailAndPassword(auth, rEmail.value, rPassword.value)
     .then((userCredential) => {
       const user = userCredential.user;
       const userData = {
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
+        email: rEmail.value,
+        firstName: firstName.value,
+        lastName: lastName.value,
         role: "user",
         image: "./img/avatar.png",
       };
-      showMessage("Account Created Successfully", "signUpMessage");
+      // showMessage("Account Created Successfully", "signUpMessage");
       const docRef = doc(db, "users", user.uid);
       setDoc(docRef, userData)
         .then(() => {
@@ -68,9 +70,9 @@ signUp.addEventListener("click", (event) => {
     .catch((error) => {
       const errorCode = error.code;
       if (errorCode == "auth/email-already-in-use") {
-        showMessage("Email Address Already Exists !!!", "signUpMessage");
+        // showMessage("Email Address Already Exists !!!", "signUpMessage");
       } else {
-        showMessage("unable to create User", "signUpMessage");
+        // showMessage("unable to create User", "signUpMessage");
       }
     });
 });
@@ -78,13 +80,14 @@ signUp.addEventListener("click", (event) => {
 const signIn = document.getElementById("submitSignIn");
 signIn.addEventListener("click", (event) => {
   event.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const auth = getAuth();
-
-  signInWithEmailAndPassword(auth, email, password)
+  const errors = inputValidationsForLogin({ email, password });
+  if (Object.values(errors).some((error) => error.value !== "")) {
+    showErrorMessageForLogin(errors);
+    return;
+  }
+  signInWithEmailAndPassword(auth, email.value, password.value)
     .then(async (userCredential) => {
-      showMessage("login is successful", "signInMessage");
+      // showMessage("login is successful", "signInMessage");
       const user = userCredential.user;
       const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
@@ -108,9 +111,77 @@ signIn.addEventListener("click", (event) => {
     .catch((error) => {
       const errorCode = error.code;
       if (errorCode === "auth/invalid-credential") {
-        showMessage("Incorrect Email or Password", "signInMessage");
+        // showMessage("Incorrect Email or Password", "signInMessage");
       } else {
-        showMessage("Account does not Exist", "signInMessage");
+        // showMessage("Account does not Exist", "signInMessage");
       }
     });
 });
+
+const inputValidationsForRegister = (inputsData) => {
+  const errors = {};
+  const { firstName, lastName, rEmail, rPassword } = inputsData;
+  if (firstName.value.trim() === "") {
+    errors.firstName = "This field is required";
+  }
+  if (lastName.value.trim() === "") {
+    errors.lastName = "This field is required";
+  }
+  if (rEmail.value.trim() === "") {
+    errors.rEmail = "This field is required";
+  }
+  if (rPassword.value.trim() === "") {
+    errors.rPassword = "This field is required";
+  }
+
+  return errors;
+};
+
+const showErrorMessageForRegister = (errors) => {
+  if (errors.firstName) {
+    firstName.parentElement.nextElementSibling.textContent = errors.firstName;
+  } else {
+    firstName.parentElement.nextElementSibling.textContent = "";
+  }
+  if (errors.lastName) {
+    lastName.parentElement.nextElementSibling.textContent = errors.lastName;
+  } else {
+    lastName.parentElement.nextElementSibling.textContent = "";
+  }
+  if (errors.rEmail) {
+    rEmail.parentElement.nextElementSibling.textContent = errors.rEmail;
+  } else {
+    rEmail.parentElement.nextElementSibling.textContent = "";
+  }
+  if (errors.rPassword) {
+    rPassword.parentElement.nextElementSibling.textContent = errors.rPassword;
+  } else {
+    rPassword.parentElement.nextElementSibling.textContent = "";
+  }
+};
+
+const inputValidationsForLogin = (inputsData) => {
+  const errors = {};
+  const { email, password } = inputsData;
+  if (email.value.trim() === "") {
+    errors.email = "This field is required";
+  }
+  if (password.value.trim() === "") {
+    errors.password = "This field is required";
+  }
+
+  return errors;
+};
+
+const showErrorMessageForLogin = (errors) => {
+  if (errors.email) {
+    email.parentElement.nextElementSibling.textContent = errors.email;
+  } else {
+    email.parentElement.nextElementSibling.textContent = "";
+  }
+  if (errors.password) {
+    password.parentElement.nextElementSibling.textContent = errors.password;
+  } else {
+    password.parentElement.nextElementSibling.textContent = "";
+  }
+};

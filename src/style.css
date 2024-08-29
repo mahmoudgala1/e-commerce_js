@@ -107,7 +107,7 @@ button.white {
 }
 #header #navbar li a:hover,
 #header #navbar li a.active {
-  color: #088178;
+  color: #4338ca;
 }
 #header #navbar li a.active::after,
 #header #navbar li a:hover::after {
@@ -117,7 +117,7 @@ button.white {
   height: 2px;
   bottom: -4px;
   left: 20px;
-  background-color: #088178;
+  background-color: #4338ca;
 }
 #header #mobile {
   display: none;
@@ -191,7 +191,7 @@ button.white {
   padding: 9px 8px 6px 8px;
   line-height: 1;
   border-radius: 4px;
-  color: #088178;
+  color: #4338ca;
 }
 #feature .fe-box:nth-child(1) h6 {
   background-color: #fddde4;
@@ -227,7 +227,7 @@ button.white {
   width: 23%;
   min-width: 250px;
   padding: 10px 12px;
-  border: 1px solid #cce7d0;
+  border: 1px solid #c7d2fe ;
   border-radius: 25px;
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
   margin: 15px 0;
@@ -262,20 +262,24 @@ button.white {
   padding-top: 7px;
   font-size: 15px;
   font-weight: 700;
-  color: #088178;
+  color: #4338ca;
 }
 #product1 .pro-container .pro span i {
   width: 40px;
   height: 40px;
   line-height: 40px;
   border-radius: 50px;
-  background-color: #e8f6ea;
-  color: #088178;
-  border: 1px solid #cce7d0;
+  background-color: #c7d2fe  ;
+  color: #4338ca;
+  border: 1px solid #c7d2fe ;
   position: absolute;
   bottom: 20px;
   right: 10px;
   cursor: pointer;
+  transition: 0.2s;
+}
+#product1 .pro-container .pro span i:hover{
+  background-color: #a5b4fc ;
 }
 /* End Product */
 /* Start Banner */
@@ -304,7 +308,7 @@ button.white {
   color: #ef3636;
 }
 #banner button:hover {
-  background-color: #088178;
+  background-color: #4338ca;
   color: #fff;
 }
 /* End Banner */
@@ -347,8 +351,8 @@ button.white {
   padding-bottom: 15px;
 }
 #sm-banner .banner-box:hover button {
-  background-color: #088178;
-  border: 1px solid #088178;
+  background-color: #4338ca;
+  border: 1px solid #4338ca;
 }
 #banner3 {
   display: flex;
@@ -425,7 +429,7 @@ button.white {
 }
 #newsletter button,
 .normal.login {
-  background-color: #088178;
+  background-color: #4338ca;
   color: #fff;
   white-space: nowrap;
   border-top-left-radius: 0;
@@ -453,7 +457,7 @@ button.white {
 }
 #pagination a {
   text-decoration: none;
-  background-color: #088178;
+  background-color: #4338ca;
   color: #fff;
   padding: 15px 20px;
   border-radius: 4px;
@@ -508,7 +512,7 @@ button.white {
   outline: none;
 }
 #prodetails .single-pro-details button {
-  background-color: #088178;
+  background-color: #4338ca;
   color: #fff;
 }
 #prodetails .single-pro-details span {
@@ -517,7 +521,7 @@ button.white {
 
 /* Cart page */
 #subtotal button {
-  background-color: #088178;
+  background-color: #4338ca;
   color: #fff;
   padding: 12px 20px;
 }
