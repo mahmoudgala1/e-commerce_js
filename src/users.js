@@ -86,7 +86,7 @@ async function getAllUsers() {
                 <div class="flex item-center justify-around">
                   <i id="edit-product" data-id=${
                     docSnap.id
-                  } class="fa-solid fa-pen-to-square text-[30px] duration-200 hover:text-[#088178] hover:cursor-pointer"></i>
+                  } class="fa-solid fa-pen-to-square text-[30px] duration-200 hover:text-indigo-700 hover:cursor-pointer"></i>
                 </div>
               </td>
             </tr>
