@@ -3,7 +3,6 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-aut
 import {
   getFirestore,
   doc,
-  setDoc,
   getDoc,
   getDocs,
   collection,
@@ -13,13 +12,7 @@ import {
   where,
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 const firebaseConfig = {
-  apiKey: "AIzaSyD1Rl4TnkTZpYg1dyRgSQ6LlXOTaDeIfDA",
-  authDomain: "e-commerce-a7786.firebaseapp.com",
-  projectId: "e-commerce-a7786",
-  storageBucket: "e-commerce-a7786.appspot.com",
-  messagingSenderId: "243196859986",
-  appId: "1:243196859986:web:668eb127d662ebea8db18b",
-  measurementId: "G-8F995YFR3Y",
+  // Put your config here
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -85,7 +78,7 @@ async function getProductsFromCart(userId) {
                   ? `<td class="py-3 px-6 text-center">
                     <div class="flex item-center justify-around">
                       <i  id="process" data-id=${docSnap.id} class="fa-solid fa-truck-fast text-[30px] duration-200 hover:text-blue-700 hover:cursor-pointer"></i>
-                      <i id="edit-product" data-id=${docSnap.id} class="fa-solid fa-pen-to-square text-[30px] duration-200 hover:text-[#088178] hover:cursor-pointer"></i>
+                      <i id="edit-product" data-id=${docSnap.id} class="fa-solid fa-pen-to-square text-[30px] duration-200 hover:text-indigo-700 hover:cursor-pointer"></i>
                       <i id="delete-product" data-id=${docSnap.id} class="fa-solid fa-trash text-[30px] duration-200 hover:text-red-600 hover:cursor-pointer"></i>
                     </div>
                   </td>`
@@ -124,14 +117,12 @@ document.querySelectorAll("#checkout").forEach((item) => {
       status: "Delivered",
     };
     await updateProduct(id, newProduct);
-    const stripe = Stripe(
-      "pk_test_51Pmi7dHY9C3R0yqy9puSPfuVEVHBQAlrirSUg4IStjSpcl4EQvoPYdGsQCKRyDDCzP1qy9EBF2HQAfa9Is4WqRcY00T8egooja"
-    );
+    const stripe = Stripe("");
     stripe
       .redirectToCheckout({
         lineItems: [
           {
-            price: "price_1PsQ5mHY9C3R0yqyjw2erd3N",
+            price: "",
             quantity: parseInt(product.quantity),
           },
         ],
